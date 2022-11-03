@@ -10,27 +10,23 @@
                 <h2>Entrar</h2>
             </div>
 
-            <v-form class="login-box">
-                <v-text-field v-model="login_id" label="Usuário" required>
+            <v-form class="login-box" method="post" novalidate="true">
+            <v-text-field  v-model="login_id" label="Usuário"  ref = "input-value" required>
                 </v-text-field>
 
-                <v-text-field
-                    type="password"
-                    v-model="login_pass"
-                    label="Senha"
-                    required
-                >
+                <v-text-field  v-model="login_pass" label="Senha" input type="password" required>
                 </v-text-field>
+                
             </v-form>
 
-            <div class="botoes">
+            <div class="botoes" >
                 <v-btn
-                    @click="logar"
+                    @click="logar" 
                     color="orange"
                     elevation="2"
                     medium
                     outlined
-                    rounded
+                    rounded :disabled="!formValidate"
                     >Conectar</v-btn
                 >
                 <router-link to="/registro">
@@ -76,6 +72,7 @@ export default {
             this.$router.push({ name: "Home" });
         },
     },
+
 };
 </script>
 
@@ -93,4 +90,10 @@ export default {
 .botoes a {
     text-decoration: none;
 }
+
+/*required fields*/
+input:required invalid{
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+} 
 </style>
