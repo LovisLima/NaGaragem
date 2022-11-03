@@ -3,9 +3,11 @@
         <v-content class="texto">{{ categoria }}</v-content>
         <div class="icone">
             <a :href="link">
+            
             <v-btn icon>
                 <v-icon color="red">mdi-chevron-double-right</v-icon>
             </v-btn>
+            
             </a>
         </div>
     </div>
