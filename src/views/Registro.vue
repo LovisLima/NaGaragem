@@ -7,13 +7,13 @@
         </v-breadcrumbs>
         <div style="width: 80%" class="registro">
             <h2>Cadastro</h2>
-            <v-form
+            <v-form @submit.prevent="cadastrar"
                 class="registro-box"
                 ref="form"
                 v-model="valid"
                 lazy-validation
             >
-                <v-text-field v-model="nome" label="Nome" required>
+                <v-text-field v-model="cliente.nome" label="Nome" required>
                 </v-text-field>
                 <v-text-field
                     v-model="password"
@@ -23,15 +23,15 @@
                 >
                 </v-text-field>
                 <v-text-field
-                    v-model="numeroTelefone"
+                    v-model="cliente.numeroTelefone"
                     label="Telefone"
-                    required
+                    
                 >
                 </v-text-field>
 
-                <v-text-field v-model="email" label="E-mail" required>
+                <v-text-field v-model="cliente.email" label="E-mail" required>
                 </v-text-field>
-                <v-text-field v-model="endereco" label="Endereço" required>
+                <v-text-field v-model="cliente.endereco" label="Endereço">
                 </v-text-field>
 
                 <v-checkbox
@@ -74,10 +74,14 @@
 
 
 <script>
+
+//import Cliente from '.services/clientes'
+
 export default {
     name: "Registro",
     data() {
         return {
+            cliente:{
             nome: "",
             password: "",
             numeroTelefone: "",
@@ -100,11 +104,18 @@ export default {
                     href: "",
                 },
             ],
+            }
         };
     },
 
+
     methods: {
-        cadastrar() {},
+        cadastrar() {
+            Cliente.cadastrar(this.cliente).then(resposta =>{
+                alert ('Cadastrado com sucesso!'), 
+                this.produto = resposta
+            })
+        },
         limpar() {
             this.nome = "";
             this.numeroTelefone = "";
