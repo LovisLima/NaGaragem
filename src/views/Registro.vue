@@ -7,31 +7,43 @@
         </v-breadcrumbs>
         <div style="width: 80%" class="registro">
             <h2>Cadastro</h2>
+            {{cliente.password}}
+
             <v-form @submit.prevent="cadastrar"
                 class="registro-box"
                 ref="form"
                 v-model="valid"
                 lazy-validation
             >
-                <v-text-field v-model="cliente.nome" label="Nome" required>
+                <v-text-field 
+                    v-model="cliente.nome" 
+                    type = "text"
+                    label="Nome" required>
                 </v-text-field>
                 <v-text-field
-                    v-model="password"
-                    type="password"
+                    v-model="cliente.password"
+                    type = "password"
                     label="Senha"
                     required
                 >
                 </v-text-field>
                 <v-text-field
                     v-model="cliente.numeroTelefone"
+                    type = "text"
                     label="Telefone"
-                    
                 >
                 </v-text-field>
 
-                <v-text-field v-model="cliente.email" label="E-mail" required>
+                <v-text-field 
+                    v-model="cliente.email" 
+                    type = "text"
+                    label="E-mail" 
+                    required
+                >
                 </v-text-field>
-                <v-text-field v-model="cliente.endereco" label="Endereço">
+                <v-text-field v-model="cliente.endereco" 
+                type = "text"
+                label="Endereço">
                 </v-text-field>
 
                 <v-checkbox
@@ -75,7 +87,7 @@
 
 <script>
 
-//import Cliente from '.services/clientes'
+import Cliente from '../services/clientes'
 
 export default {
     name: "Registro",
@@ -87,6 +99,8 @@ export default {
             numeroTelefone: "",
             email: "",
             endereco: "",
+        },
+
             items: [
                 {
                     text: "início",
@@ -104,18 +118,20 @@ export default {
                     href: "",
                 },
             ],
-            }
         };
     },
 
 
     methods: {
-        cadastrar() {
-            Cliente.cadastrar(this.cliente).then(resposta =>{
-                alert ('Cadastrado com sucesso!'), 
-                this.produto = resposta
-            })
-        },
+         cadastrar(){
+          
+            
+            Cliente.cadastrar(this.cliente).then(
+            alert('salvo com sucesso!')
+        )
+        }, 
+        
+        
         limpar() {
             this.nome = "";
             this.numeroTelefone = "";
@@ -123,8 +139,12 @@ export default {
             this.email = "";
             this.endereco = "";
         },
+
+       
     },
 };
+
+
 </script>
 
 <style>
