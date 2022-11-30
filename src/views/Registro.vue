@@ -7,7 +7,7 @@
         </v-breadcrumbs>
         <div style="width: 80%" class="registro">
             <h2>Cadastro</h2>
-            {{cliente.password}}
+            
 
             <v-form @submit.prevent="cadastrar"
                 class="registro-box"
@@ -45,13 +45,7 @@
                 type = "text"
                 label="Endereço">
                 </v-text-field>
-
-                <v-checkbox
-                    v-model="checkbox"
-                    label="Aceita os termos de uso?"
-                    required
-                >
-                </v-checkbox>
+                
             </v-form>
             <div class="botoes">
                 <router-link to="/confirmacao">
@@ -86,11 +80,12 @@
 
 
 <script>
-
+import axios from "axios"
 import Cliente from '../services/clientes'
 
 export default {
     name: "Registro",
+
     data() {
         return {
             cliente:{
@@ -99,6 +94,7 @@ export default {
             numeroTelefone: "",
             email: "",
             endereco: "",
+           
         },
 
             items: [
@@ -123,12 +119,12 @@ export default {
 
 
     methods: {
-         cadastrar(){
+           cadastrar(){
+            axios.post("http://localhost:8080/cliente",this.cliente)
+            .then('cadastrado com sucesso');
           
-            
-            Cliente.cadastrar(this.cliente).then(
-            alert('salvo com sucesso!')
-        )
+        
+        
         }, 
         
         
