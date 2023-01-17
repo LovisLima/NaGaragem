@@ -21,7 +21,7 @@
                 </v-card-text>
 
                 <v-card-text class="white--text pt-0">
-                    Phasellus feugiat arcu sapien, et iaculis ipsum elementum
+                    Phasellus feugiat arcu sapien, et iaculis ipsum
                     sit amet. Mauris cursus commodo interdum. Praesent ut risus
                     eget metus luctus accumsan id ultrices nunc. Sed at orci sed
                     massa consectetur dignissim a sit amet dui. Duis commodo
